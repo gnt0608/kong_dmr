@@ -1,0 +1,8 @@
+_format_version: "3.0"
+services:
+- name: dmr
+  url: http://model-runner.docker.internal/engines/v1/chat/completions
+  routes:
+  - name: dmr-route
+    paths:
+    - /

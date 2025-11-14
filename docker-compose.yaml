@@ -1,0 +1,18 @@
+services:
+  kong:
+    container_name: kong
+    ports:
+      - "80:80"
+    image: kong/kong
+    volumes:
+      - ./kong.yml:/kong/declarative/kong.yml
+    environment:
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/kong/declarative/kong.yml
+      - KONG_PROXY_LISTEN=0.0.0.0:80
+    models:
+      - llm
+
+models:
+  llm:
+    model: ai/smollm2
