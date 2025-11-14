@@ -21,4 +21,4 @@ services:
       prompts: 
         prepend:
         - role: system
-          content: You are a helpful assistant. Always respond in Japanese. {{ user_prompt }}
+          content: You are a helpful assistant. Always respond in Japanese.
