@@ -1,8 +1,24 @@
 _format_version: "3.0"
 services:
 - name: dmr
-  url: http://model-runner.docker.internal/engines/v1/chat/completions
+  url: http://localhost
   routes:
   - name: dmr-route
     paths:
     - /
+  plugins:
+  - name: ai-proxy
+    config:
+      route_type: llm/v1/chat
+      model:
+        provider: llama2
+        name: ai/smollm3:Q4_K_M
+        options:
+          llama2_format: openai
+          upstream_url: http://model-runner.docker.internal:80/engines/v1/chat/completions
+  - name: ai-prompt-decorator
+    config:
+      prompts: 
+        prepend:
+        - role: system
+          content: You are a helpful assistant. Always respond in Japanese. {{ user_prompt }}
