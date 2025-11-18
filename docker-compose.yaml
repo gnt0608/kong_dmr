@@ -3,7 +3,7 @@ services:
     container_name: kong
     ports:
       - "80:80"
-    image: kong/kong
+    image: kong/kong:3.9.1
     volumes:
       - ./kong.yml:/kong/declarative/kong.yml
     environment:
