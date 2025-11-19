@@ -3,8 +3,8 @@ services:
     container_name: kong
     ports:
       - "80:80"
-    image: kong/kong:3.9.1
-    volumes:
+    image: kong/kong-gateway:3.12.0.1
+    volumes:  
       - ./kong.yml:/kong/declarative/kong.yml
     environment:
       - KONG_DATABASE=off
